@@ -1,4 +1,4 @@
-var TUNES_DIRECTORY = "tunes";
+var TUNES_DIRECTORY = "/tunes";
 
 (function($) {
 
