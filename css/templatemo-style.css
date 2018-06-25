@@ -499,6 +499,11 @@ h3.profile-title {
   margin: 10px;
   z-index: 1;
 }
+.tune-text i {
+  color: white;
+  cursor: pointer;
+  font-size: 30px;
+}
 .tune-item:hover .tune-hover {
   top: 0;
   opacity: 1;
