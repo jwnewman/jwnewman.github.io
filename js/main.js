@@ -32,8 +32,8 @@ var TUNE_NAMES = [];
 	    			$(data).find("a:contains(.mp3)").each(function() {
 	    				var filename = this.href.replace(window.location, "").replace("https://", "");
 	    				TUNE_NAMES.push(
-	    					unescape(filename.substr(0, filename.indexOf('.'))).replace("'", "")
-    					);
+	    					unescape(filename.substr(0, filename.indexOf('.')))
+	    				);
 	    			});
 	    			append_tunes_to_dom();
 	    		}
@@ -42,11 +42,11 @@ var TUNE_NAMES = [];
     }
 
     // Create an audio element for each tune. The name of the element is the name of the
-	// mp3 file, minus the extension.
+	// mp3 file, minus the extension, and stripped of apostrphes.
     function append_tunes_to_dom() {
     	for (var i = 0; i < TUNE_NAMES.length; ++i) {
 	    	$('#tunes').append(
-	    		"<audio id='" + TUNE_NAMES[i] + "'>"
+	    		"<audio id='" + TUNE_NAMES[i].replace("'", "") + "'>"
 	    			+ "<source src='" + TUNES_DIRECTORY + TUNE_NAMES[i] + ".mp3'>"
     			+ "</audio>"
     		);
