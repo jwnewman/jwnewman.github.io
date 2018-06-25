@@ -482,10 +482,22 @@ h3.profile-title {
   margin-bottom: 2px;
   overflow: hidden;
   position: relative;
+  background: rgba(86, 0, 255, 0.4);
+  height: 250px;
 }
 .tune-item img {
   width: 100%;
   display: block;
+}
+.tune-text {
+  color: white;
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: space-around;
+  position: relative;
+  margin: 10px;
+  z-index: 1;
 }
 .tune-item:hover .tune-hover {
   top: 0;
