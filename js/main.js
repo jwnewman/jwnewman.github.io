@@ -31,7 +31,9 @@ var TUNE_NAMES = [];
 	    		success: function(data) {
 	    			$(data).find("a:contains(.mp3)").each(function() {
 	    				var filename = this.href.replace(window.location, "").replace("https://", "");
-	    				TUNE_NAMES.push(filename.substr(0, filename.indexOf('.')));
+	    				TUNE_NAMES.push(
+	    					unescape(filename.substr(0, filename.indexOf('.'))).replace("'", "")
+    					);
 	    			});
 	    			append_tunes_to_dom();
 	    		}
