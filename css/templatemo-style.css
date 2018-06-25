@@ -441,6 +441,7 @@ h3.profile-title {
 
 .welcome-text {
   position: relative;
+  top: 130px;
   z-index: 4;
 }
 .welcome-text h2 {
