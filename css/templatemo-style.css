@@ -546,6 +546,10 @@ h3.profile-title {
   padding-bottom: 14px;
 }
 
+.tune-hover small {
+  color: gray;
+}
+
 
 /*------ contact ------ */
 .contact-form {
