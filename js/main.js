@@ -1,6 +1,10 @@
+var TUNES_DIRECTORY = "tunes";
+
 (function($) {
 
 	"use strict";	
+
+	$(document).ready(load_audio);
 
   
     $('.navigation').singlePageNav({
@@ -13,7 +17,17 @@
         return false;
     });
 
-
+    function load_audio() {
+    	$.ajax({
+    		url: TUNES_DIRECTORY,
+    		success: function(data) {
+    			$(data).find("a:contains(.mp3)").each(function() {
+    				var filename = this.href.replace(window.location, "").replace("http://", "");
+    				console.log(filename);
+    			});
+    		}
+    	});
+    }
 
 })(jQuery);
 
