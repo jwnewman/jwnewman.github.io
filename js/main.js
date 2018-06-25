@@ -22,7 +22,7 @@ var TUNES_DIRECTORY = "tunes";
     		url: TUNES_DIRECTORY,
     		success: function(data) {
     			$(data).find("a:contains(.mp3)").each(function() {
-    				var filename = this.href.replace(window.location, "").replace("http://", "");
+    				var filename = this.href.replace(window.location, "").replace("https://", "");
     				console.log(filename);
     			});
     		}
