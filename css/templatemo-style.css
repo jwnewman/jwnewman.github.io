@@ -541,9 +541,11 @@ h3.profile-title {
 }
 .tune-hover p {
   color: white;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 20px;
+  padding-bottom: 14px;
 }
+
 
 /*------ contact ------ */
 .contact-form {
