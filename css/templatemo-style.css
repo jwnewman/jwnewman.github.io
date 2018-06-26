@@ -581,6 +581,14 @@ h3.profile-title {
   color: #20b5ff;
 }
 
+/*------ gigs ------ */
+.gig-table {
+  margin-top: 40px;
+}
+.gig-table td {
+  padding: 20px !important;
+}
+
 /*------ contact ------ */
 .contact-form {
   margin-top: 40px;
