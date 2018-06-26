@@ -15,7 +15,7 @@ var tunes = `[{
       "name": "Behind the Waterfall",
       "time": "Reel",
       "key": "D dor/mix",
-      "description": "Jess wrote this one. The name comes from the sound of agonizing and patient practice, best captured by Makar from the Wind Waker (Zelda 2003), who can be heard scratching out an eternal practice session behind a waterfall.An early Mark jig written for a roleplay character, who rescued a fiddler from a predicament and received a tune in return.",
+      "description": "Jess wrote this one. The name comes from the sound of agonizing and patient practice, best captured by Makar from the Wind Waker (Zelda 2003), who can be heard scratching out an eternal practice session behind a waterfall.",
       "date": "May 2017",
       "author": "Jess",
       "audio": "behind the waterfall",
