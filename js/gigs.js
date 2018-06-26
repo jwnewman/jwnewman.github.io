@@ -12,6 +12,7 @@
     window.loadGigSchedule = loadGigSchedule;
 
 
+    // Add a row to the gig table for each gig.
     function appendGigToDom(gig) {
         $('#gig-table').append(
             `<tr>
