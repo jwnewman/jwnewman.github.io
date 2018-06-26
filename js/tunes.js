@@ -1,5 +1,4 @@
 var TUNES_DIRECTORY = "tunes/";
-var TUNE_NAMES = [];
 var MOST_RECENTLY_PLAYED = "";
 
 (function($) {
