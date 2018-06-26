@@ -43,8 +43,36 @@ var MOST_RECENTLY_PLAYED = "";
         }
 
         // Bind event handlers.
-        $('audio').on('pause', onEnded);
         $('audio').on('ended', onEnded);
+    }
+
+
+    // Handles toggling audio on or off when the user clicks a play button.
+    function toggleAudio(clickedButton, tune) {
+        var audioElement = document.getElementById(tune);
+        if (isPlaying(audioElement)) {
+            pause(audioElement);
+        }
+        else {
+            // Pause any playing audio.
+            var recentlyPlayedAudioElement = document.getElementById(MOST_RECENTLY_PLAYED);
+            if (isPlaying(recentlyPlayedAudioElement)) {
+                pause(recentlyPlayedAudioElement);
+            }
+            audioElement.play();
+            MOST_RECENTLY_PLAYED = tune;
+            $(clickedButton).toggleClass("fa-play-circle-o fa-play-circle");
+        }
+    }
+    window.toggleAudio = toggleAudio;
+
+
+    // Pauses playing audio.
+    function pause(audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        // Call onEnded manually to prevent races with playing something else.
+        onEnded();
     }
 
 
@@ -55,28 +83,6 @@ var MOST_RECENTLY_PLAYED = "";
         })
     }
 
-
-    // Handles toggling audio on or off when the user clicks a play button.
-    function toggleAudio(clickedButton, tune) {
-        var audioElement = document.getElementById(tune);
-        if (isPlaying(audioElement)) {
-            audioElement.pause();
-            audioElement.currentTime = 0;
-            $()
-        }
-        else {
-            // Pause any playing audio.
-            var recentlyPlayedAudioElement = document.getElementById(MOST_RECENTLY_PLAYED);
-            if (isPlaying(recentlyPlayedAudioElement)) {
-                recentlyPlayedAudioElement.pause();
-                recentlyPlayedAudioElement.currentTime = 0;
-            }
-            audioElement.play();
-            MOST_RECENTLY_PLAYED = tune;
-            $(clickedButton).toggleClass("fa-play-circle-o fa-play-circle");
-        }
-    }
-    window.toggleAudio = toggleAudio;
 
 
     // Determines whether a given audio element is currently playing.
