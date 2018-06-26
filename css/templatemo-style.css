@@ -522,6 +522,15 @@ h3.profile-title {
   cursor: pointer;
   font-size: 30px;
 }
+.tune-background {
+  bottom: 20px;
+  left: 20px;
+  font-size: 100px;
+  opacity: 0.6;
+  position: absolute;
+  z-index: -1;
+
+}
 .tune-item:hover .tune-hover {
   top: 0;
   opacity: 1;
