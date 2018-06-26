@@ -276,7 +276,7 @@ hr {
   width: 23%;
   height: 100%;
   position: fixed;
-  background-color: #5f6d7e;
+  background-color: #475641;
   color: white;
   overflow-y: hidden;
 }
@@ -327,13 +327,13 @@ h3.profile-title {
   font-size: 24px;
 }
 .main-navigation li a:hover {
-  background: #5b6878;
+  background: #3e4a39;
 }
 .main-navigation li a.active {
-  background: #495461;
+  background: #313c2c;
 }
 .main-navigation li a.active:hover {
-  background: #495461;
+  background: #313c2c;
 }
 
 .social-icons {
@@ -349,7 +349,7 @@ h3.profile-title {
   color: white;
 }
 .social-icons a:hover {
-  color: #282e35;
+  color: #2c3528;
 }
 
 .responsive-header {
