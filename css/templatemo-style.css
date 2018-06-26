@@ -576,10 +576,10 @@ h3.profile-title {
   font-size: 30px;
 }
 
-.tune-hover pdf-link {
-  color: gray;
+.tune-hover a{
+  font-weight: bolder;
+  color: #20b5ff;
 }
-
 
 /*------ contact ------ */
 .contact-form {
