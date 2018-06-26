@@ -6,44 +6,63 @@ var MOST_RECENTLY_PLAYED = "";
 
     "use strict";    
 
-    // Load all the audio files in the tunes directory into the DOM.
-    function loadAudio() {
-        // If running on the filesystem, ajax won't work, so populate some test data.
-        if (window.location.protocol === "file:") {
-            TUNE_NAMES = ["meeting of the minds", "(a normal shell,) made by the sea", "avery's jig"];
-            appendTunesToDom();
-        } else {
-            // Iterate over the tunes in the tune directory and add them to a list.
-            $.ajax({
-                url: '/' + TUNES_DIRECTORY,
-                success: function(data) {
-                    $(data).find("a:contains(.mp3)").each(function() {
-                        var filename = this.href.replace(window.location, "").replace("https://", "");
-                        TUNE_NAMES.push(
-                            unescape(filename.substr(0, filename.indexOf('.')))
-                        );
-                    });
-                    appendTunesToDom();
-                }
-            });
-        }
-    }
-    window.loadAudio = loadAudio;
-
-
-    // Create an audio element for each tune. The name of the element is the name of the
-    // mp3 file, minus the extension, and stripped of apostrophes.
-    function appendTunesToDom() {
-        for (var i = 0; i < TUNE_NAMES.length; ++i) {
-            $('#tunes').append(
-                "<audio id='" + TUNE_NAMES[i].replace("'", "") + "'>"
-                    + "<source src='" + TUNES_DIRECTORY + TUNE_NAMES[i] + ".mp3'>"
-                + "</audio>"
-            );
+    // Read tunes out of a JSON file in tuneContent.js.
+    function loadTunes() {
+        var tunes = JSON.parse(window.tunes)[0].tunes;
+        for (var i = 0; i < tunes.length; ++i) {
+            appendTuneToDom(tunes[i]);
         }
 
         // Bind event handlers.
         $('audio').on('ended', onEnded);
+        $('.fa-play-circle-o').click(function(event) {
+            var $target = $(event.target);
+            toggleAudio($(this), $target.data("tune"));
+        });
+    }
+    window.loadTunes = loadTunes;
+
+
+    // Add a tune element to the DOM for a tune represented in JSON.
+    function appendTuneToDom(tune) {
+        $('.tunes-holder').append(
+            `<div class="col-md-4 col-sm-6">
+                <div class="tune-item ` + getCssClassForTimeKey(tune.time, tune.key) + `">
+                    <div class="tune-background">
+                        <i class="fa fa-music"></i>
+                    </div>
+                    <div class="tune-text">
+                        <p>` + tune.name + `</p>
+                        <p>` + tune.time + `</p>
+                        <p>` + tune.key + `</p>
+                        <i class="fa fa-play-circle-o" data-tune="` + tune.audio + `"></i>
+                    </div>
+                    <div class="tune-hover">
+                        <div class="inside">
+                            <p>` + tune.description + tune.date + `.</p>
+                            <a href="` + TUNES_DIRECTORY + tune.pdf + `.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> Sheet music (.pdf)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        );
+        $('#tunes').append(
+            `<audio id='` + tune.audio + `'>
+                <source src='` + TUNES_DIRECTORY + unescape(tune.audio) + `.mp3'>
+            </audio>`
+        );
+    }
+
+
+    // Tune elements are color-coded. Determine the CSS class for the key and time signature.
+    function getCssClassForTimeKey(time, key) {
+        if (time === "Jig") {
+            return (key.includes("min") || key.includes("dor")) ? "tune-jig-minor" : "tune-jig-major";
+        } else if (time === "Waltz") {
+            return (key.includes("min") || key.includes("dor")) ? "tune-waltz-minor" : "tune-waltz-major";
+        } else {
+            return (key.includes("min") || key.includes("dor")) ? "tune-reel-minor" : "tune-reel-major";
+        }
     }
 
 
@@ -74,7 +93,6 @@ var MOST_RECENTLY_PLAYED = "";
         // Call onEnded manually to prevent races with playing something else.
         onEnded();
     }
-
 
     // Resets 'playing' icon when audio is no longer playing.
     function onEnded() {

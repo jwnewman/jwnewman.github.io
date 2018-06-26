@@ -6,7 +6,7 @@ var MOST_RECENTLY_PLAYED = "";
 
     "use strict";    
 
-    $(document).ready(loadAudio);
+    $(document).ready(loadTunes);
   
 
     $('.navigation').singlePageNav({
