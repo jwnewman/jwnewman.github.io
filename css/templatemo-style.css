@@ -482,12 +482,30 @@ h3.profile-title {
   margin-bottom: 2px;
   overflow: hidden;
   position: relative;
-  background: rgba(86, 0, 255, 0.4);
+/*  background: rgba(86, 0, 255, 0.4);*/
   height: 250px;
 }
 .tune-item img {
   width: 100%;
   display: block;
+}
+.tune-reel-major{
+  background: rgba(86, 0, 255, 0.4);
+}
+.tune-reel-minor{
+  background: rgba(86, 0, 255, 0.4);
+}
+.tune-jig-major{
+  background: rgba(86, 0, 255, 0.4);
+}
+.tune-jig-minor{
+  background: rgba(86, 0, 255, 0.4);
+}
+.tune-waltz-major{
+  background: rgba(86, 0, 255, 0.4);
+}
+.tune-waltz-minor{
+  background: rgba(86, 0, 255, 0.4);
 }
 .tune-text {
   color: white;
