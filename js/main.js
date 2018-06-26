@@ -1,12 +1,14 @@
-var TUNES_DIRECTORY = "tunes/";
-var TUNE_NAMES = [];
-var MOST_RECENTLY_PLAYED = "";
-
 (function($) {
 
     "use strict";    
 
-    $(document).ready(loadTunes);
+    $(document).ready(loadContent);
+
+
+    function loadContent() {
+        loadTunes();
+        loadGigSchedule();
+    }
   
 
     $('.navigation').singlePageNav({
@@ -19,21 +21,7 @@ var MOST_RECENTLY_PLAYED = "";
         return false;
     });
 
-
-    $('.fa-play-circle-o').click(function(event) {
-        var $target = $(event.target);
-        toggleAudio($(this), $target.data("tune"));
-    });
-
-    $('audio').on('pause', function() {
-        console.log("hi");
-        // $(this).toggleClass("fa-play-circle fa-play-circle-o");
-    });
-
 })(jQuery);
-
-
-
 
 
 

@@ -5,7 +5,7 @@ var MOST_RECENTLY_PLAYED = "";
 
     "use strict";    
 
-    // Read tunes out of a JSON file in tuneContent.js.
+    // Read tunes out of a JSON object in tuneContent.js.
     function loadTunes() {
         var tunes = JSON.parse(window.tunes)[0].tunes;
         for (var i = 0; i < tunes.length; ++i) {
