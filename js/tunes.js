@@ -10,7 +10,7 @@ var MOST_RECENTLY_PLAYED = "";
     function loadAudio() {
         // If running on the filesystem, ajax won't work, so populate some test data.
         if (window.location.protocol === "file:") {
-            TUNE_NAMES = ["meeting of the minds", "spider jive", "avery's jig"];
+            TUNE_NAMES = ["meeting of the minds", "(a normal shell,) made by the sea", "avery's jig"];
             appendTunesToDom();
         } else {
             // Iterate over the tunes in the tune directory and add them to a list.
@@ -30,6 +30,7 @@ var MOST_RECENTLY_PLAYED = "";
     }
     window.loadAudio = loadAudio;
 
+
     // Create an audio element for each tune. The name of the element is the name of the
     // mp3 file, minus the extension, and stripped of apostrophes.
     function appendTunesToDom() {
@@ -43,7 +44,7 @@ var MOST_RECENTLY_PLAYED = "";
 
         // Bind event handlers.
         $('audio').on('pause', onEnded);
-        $('audio').on('ended', onEnded)
+        $('audio').on('ended', onEnded);
     }
 
 
