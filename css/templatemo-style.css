@@ -586,7 +586,8 @@ h3.profile-title {
   margin-top: 40px;
 }
 .gig-table td {
-  padding: 20px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
 }
 
 /*------ contact ------ */
