@@ -490,22 +490,22 @@ h3.profile-title {
   display: block;
 }
 .tune-reel-major{
-  background: rgba(86, 0, 255, 0.4);
+  background: rgba(67, 0, 199, 0.4);
 }
 .tune-reel-minor{
-  background: rgba(86, 0, 255, 0.4);
+  background: rgba(123, 0, 0, 0.4);
 }
 .tune-jig-major{
-  background: rgba(86, 0, 255, 0.4);
+  background: rgba(37, 86, 0, 0.4);
 }
 .tune-jig-minor{
-  background: rgba(86, 0, 255, 0.4);
+  background: rgba(214, 142, 7, 0.4);
 }
 .tune-waltz-major{
-  background: rgba(86, 0, 255, 0.4);
+  background: rgba(1, 99, 202, 0.4);
 }
 .tune-waltz-minor{
-  background: rgba(86, 0, 255, 0.4);
+  background: rgba(140, 1, 103, 0.4);
 }
 .tune-text {
   color: white;
