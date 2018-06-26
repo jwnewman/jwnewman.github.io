@@ -39,7 +39,7 @@ var MOST_RECENTLY_PLAYED = "";
                     </div>
                     <div class="tune-hover">
                         <div class="inside">
-                            <p>` + tune.description + tune.date + `.</p>
+                            <p>` + tune.description + ` ` + tune.date + `.</p>
                             <a href="` + TUNES_DIRECTORY + tune.pdf + `.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> Sheet music (.pdf)</a>
                         </div>
                     </div>
