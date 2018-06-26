@@ -572,8 +572,11 @@ h3.profile-title {
   line-height: 20px;
   padding-bottom: 14px;
 }
+.tune-hover i{
+  font-size: 30px;
+}
 
-.tune-hover small {
+.tune-hover pdf-link {
   color: gray;
 }
 
