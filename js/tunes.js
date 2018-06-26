@@ -55,9 +55,9 @@ var MOST_RECENTLY_PLAYED = "";
 
     // Tune elements are color-coded. Determine the CSS class for the key and time signature.
     function getCssClassForTimeKey(time, key) {
-        if (time === "Jig") {
+        if (time.toLowerCase().includes("jig")) {
             return (key.includes("min") || key.includes("dor")) ? "tune-jig-minor" : "tune-jig-major";
-        } else if (time === "Waltz") {
+        } else if (time.toLowerCase().includes("waltz")) {
             return (key.includes("min") || key.includes("dor")) ? "tune-waltz-minor" : "tune-waltz-major";
         } else {
             return (key.includes("min") || key.includes("dor")) ? "tune-reel-minor" : "tune-reel-major";
