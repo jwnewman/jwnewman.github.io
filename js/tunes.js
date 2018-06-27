@@ -25,30 +25,30 @@ var MOST_RECENTLY_PLAYED = "";
     // Add a tune element to the DOM for a tune represented in JSON.
     function appendTuneToDom(tune) {
         $('.tunes-holder').append(
-            `<div class="col-md-4 col-sm-6">
-                <div class="tune-item ` + getCssClassForTimeKey(tune.time, tune.key) + `">
-                    <div class="tune-background">
-                        <i class="fa fa-music"></i>
-                    </div>
-                    <div class="tune-text">
-                        <p>` + tune.name + `</p>
-                        <p>` + tune.time + `</p>
-                        <p>` + tune.key + `</p>
-                        <i class="fa fa-play-circle-o" data-tune="` + tune.audio + `"></i>
-                    </div>
-                    <div class="tune-hover">
-                        <div class="inside">
-                            <p>` + tune.description + ` ` + tune.date + `.</p>
-                            <a href="` + TUNES_DIRECTORY + tune.pdf + `.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> Sheet music (.pdf)</a>
-                        </div>
-                    </div>
-                </div>
-            </div>`
+            '<div class="col-md-4 col-sm-6">'
+                + '<div class="tune-item ' + getCssClassForTimeKey(tune.time, tune.key) + '">'
+                    + '<div class="tune-background">'
+                        + '<i class="fa fa-music"></i>'
+                    + '</div>'
+                    + '<div class="tune-text">'
+                        + '<p>' + tune.name + '</p>'
+                        + '<p>' + tune.time + '</p>'
+                        + '<p>' + tune.key + '</p>'
+                        + '<i class="fa fa-play-circle-o" data-tune="' + tune.audio + '"></i>'
+                    + '</div>'
+                    + '<div class="tune-hover">'
+                        + '<div class="inside">'
+                            + '<p>' + tune.description + ' ' + tune.date + '.</p>'
+                            + '<a href="' + TUNES_DIRECTORY + tune.pdf + '.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> Sheet music (.pdf)</a>'
+                        + '</div>'
+                    + '</div>'
+                + '</div>'
+            + '</div>'
         );
         $('#tunes').append(
-            `<audio id='` + tune.audio + `'>
-                <source src='` + TUNES_DIRECTORY + unescape(tune.audio) + `.mp3'>
-            </audio>`
+            '<audio id="' + tune.audio + '">'
+                + '<source src="' + TUNES_DIRECTORY + unescape(tune.audio) + '.mp3">'
+            + '</audio>'
         );
     }
 

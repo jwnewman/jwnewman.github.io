@@ -15,13 +15,13 @@
     // Add a row to the gig table for each gig.
     function appendGigToDom(gig) {
         $('#gig-table').append(
-            `<tr>
-                <td>` + gig.date + `</td>
-                <td>` + gig.who + `</td>
-                <td>` + gig.band + `</td>
-                <td>` + gig.location + `</td>
-                <td>` + gig.event + `</td>
-            </tr>`
+            '<tr>'
+                + '<td>' + gig.date + '</td>'
+                + '<td>' + gig.who + '</td>'
+                + '<td>' + gig.band + '</td>'
+                + '<td>' + gig.location + '</td>'
+                + '<td>' + gig.event + '</td>'
+            + '</tr>'
         );
     }
 
