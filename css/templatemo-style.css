@@ -516,13 +516,21 @@ h3.profile-title {
 }
 .tune-text {
   color: white;
-  display: flex;
   font-size: 16px;
   font-weight: bold;
-  justify-content: space-around;
   position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
   margin: 10px;
   z-index: 1;
+}
+.tune-text p {
+
 }
 .tune-text i {
   color: white;
