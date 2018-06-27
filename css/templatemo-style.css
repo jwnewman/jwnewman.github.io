@@ -353,7 +353,7 @@ h3.profile-title {
 }
 
 .responsive-header {
-  background: #5f6d7e;
+  background: #475641 !important;
   text-align: center;
 }
 @media screen and (max-width: 992px) {
@@ -395,10 +395,10 @@ h3.profile-title {
     padding: 10px;
   }
   .main-navigation a.active {
-    background: #5f6d7e !important;
+    background: #475641 !important;
   }
   .main-navigation a:hover {
-    background: #5f6d7e !important;
+    background: #475641 !important;
   }
 }
 
@@ -614,7 +614,7 @@ h3.profile-title {
 }
 .contact-form .button {
   width: auto;
-  background: #5f6d7e;
+  background: #475641;
   color: white;
   text-transform: uppercase;
   border: 0;
@@ -628,7 +628,7 @@ h3.profile-title {
   font-size: 13px;
 }
 #footer p.copyright-text a {
-  color: #5f6d7e;
+  color: #475641;
 }
 #footer p.copyright-text a:hover {
   color: #6cc0f7;
