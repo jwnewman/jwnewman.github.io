@@ -1,7 +1,7 @@
 var TUNES_DIRECTORY = "tunes/";
 var MOST_RECENTLY_PLAYED_TUNE_ID = "";
-var AUDIO_CLASS_PREFIX = "audio-";
-var PLAY_BUTTON_CLASS_PREFIX = "play-";
+var AUDIO_PREFIX = "audio-";
+var PLAY_BUTTON_PREFIX = "play-";
 
 (function($) {
 
@@ -40,7 +40,7 @@ var PLAY_BUTTON_CLASS_PREFIX = "play-";
                         + '<p>' + tune.name + '</p>'
                         + '<p>' + tune.time + '</p>'
                         + '<p>' + tune.key + '</p>'
-                        + '<i class="fa fa-play-circle-o" id="' + PLAY_BUTTON_CLASS_PREFIX + id + '" data-tune-id="' + id + '"></i>'
+                        + '<i class="fa fa-play-circle-o" id="' + PLAY_BUTTON_PREFIX + id + '" data-tune-id="' + id + '"></i>'
                     + '</div>'
                     + '<div class="tune-hover">'
                         + '<div class="inside">'
@@ -52,7 +52,7 @@ var PLAY_BUTTON_CLASS_PREFIX = "play-";
             + '</div>'
         );
         $('#tunes').append(
-            '<audio id="' + AUDIO_CLASS_PREFIX + id + '" data-tune-id="' + id + '">'
+            '<audio id="' + AUDIO_PREFIX + id + '" data-tune-id="' + id + '">'
                 + '<source src="' + TUNES_DIRECTORY + unescape(tune.audio) + '.mp3">'
             + '</audio>'
         );
@@ -78,13 +78,13 @@ var PLAY_BUTTON_CLASS_PREFIX = "play-";
 
     // Handles toggling audio on or off when the user clicks a play button.
     function toggleAudio(clickedButton, tuneId) {
-        var audioElement = document.getElementById(AUDIO_CLASS_PREFIX + tuneId);
+        var audioElement = document.getElementById(AUDIO_PREFIX + tuneId);
         if (isPlaying(audioElement)) {
             pause(tuneId);
         }
         else {
             // Pause any playing audio.
-            if (isPlaying(document.getElementById(AUDIO_CLASS_PREFIX + MOST_RECENTLY_PLAYED_TUNE_ID))) {
+            if (isPlaying(document.getElementById(AUDIO_PREFIX + MOST_RECENTLY_PLAYED_TUNE_ID))) {
                 pause(MOST_RECENTLY_PLAYED_TUNE_ID);
             }
             audioElement.play();
@@ -97,7 +97,7 @@ var PLAY_BUTTON_CLASS_PREFIX = "play-";
 
     // Pauses playing audio.
     function pause(tuneId) {
-        var audioElement = document.getElementById(AUDIO_CLASS_PREFIX + tuneId);
+        var audioElement = document.getElementById(AUDIO_PREFIX + tuneId);
         audioElement.pause();
         audioElement.currentTime = 0;
         // Call onEnded manually to prevent races with playing something else.
@@ -106,7 +106,7 @@ var PLAY_BUTTON_CLASS_PREFIX = "play-";
 
     // Resets 'playing' icon when audio is no longer playing.
     function onEnded(tuneId) {
-        $('#' + PLAY_BUTTON_CLASS_PREFIX + tuneId).toggleClass("fa-play-circle fa-play-circle-o");
+        $('#' + PLAY_BUTTON_PREFIX + tuneId).toggleClass("fa-play-circle fa-play-circle-o");
     }
 
 
