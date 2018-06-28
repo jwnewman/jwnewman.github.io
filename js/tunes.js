@@ -1,5 +1,7 @@
 var TUNES_DIRECTORY = "tunes/";
-var MOST_RECENTLY_PLAYED = "";
+var MOST_RECENTLY_PLAYED_TUNE_ID = "";
+var AUDIO_CLASS_PREFIX = "audio-";
+var PLAY_BUTTON_CLASS_PREFIX = "play-";
 
 (function($) {
 
@@ -9,21 +11,25 @@ var MOST_RECENTLY_PLAYED = "";
     function loadTunes() {
         var tunes = JSON.parse(window.tunes)[0].tunes;
         for (var i = 0; i < tunes.length; ++i) {
-            appendTuneToDom(tunes[i]);
+            // Generate unique ID from index.
+            appendTuneToDom(tunes[i], "tune-" + i);
         }
 
         // Bind event handlers.
-        $('audio').on('ended', onEnded);
+        $('audio').on('ended', function(event) {
+            var $target = $(event.target);
+            onEnded($target.data("tune-id"));
+        });
         $('.fa-play-circle-o').click(function(event) {
             var $target = $(event.target);
-            toggleAudio($(this), $target.data("tune"));
+            toggleAudio($(this), $target.data("tune-id"));
         });
     }
     window.loadTunes = loadTunes;
 
 
     // Add a tune element to the DOM for a tune represented in JSON.
-    function appendTuneToDom(tune) {
+    function appendTuneToDom(tune, id) {
         $('.tunes-holder').append(
             '<div class="col-md-4 col-sm-6">'
                 + '<div class="tune-item ' + getCssClassForTimeKey(tune.time, tune.key) + '">'
@@ -34,7 +40,7 @@ var MOST_RECENTLY_PLAYED = "";
                         + '<p>' + tune.name + '</p>'
                         + '<p>' + tune.time + '</p>'
                         + '<p>' + tune.key + '</p>'
-                        + '<i class="fa fa-play-circle-o" data-tune="' + tune.audio + '"></i>'
+                        + '<i class="fa fa-play-circle-o" id="' + PLAY_BUTTON_CLASS_PREFIX + id + '" data-tune-id="' + id + '"></i>'
                     + '</div>'
                     + '<div class="tune-hover">'
                         + '<div class="inside">'
@@ -46,7 +52,7 @@ var MOST_RECENTLY_PLAYED = "";
             + '</div>'
         );
         $('#tunes').append(
-            '<audio id="' + tune.audio + '">'
+            '<audio id="' + AUDIO_CLASS_PREFIX + id + '" data-tune-id="' + id + '">'
                 + '<source src="' + TUNES_DIRECTORY + unescape(tune.audio) + '.mp3">'
             + '</audio>'
         );
@@ -71,19 +77,18 @@ var MOST_RECENTLY_PLAYED = "";
 
 
     // Handles toggling audio on or off when the user clicks a play button.
-    function toggleAudio(clickedButton, tune) {
-        var audioElement = document.getElementById(tune);
+    function toggleAudio(clickedButton, tuneId) {
+        var audioElement = document.getElementById(AUDIO_CLASS_PREFIX + tuneId);
         if (isPlaying(audioElement)) {
-            pause(audioElement);
+            pause(tuneId);
         }
         else {
             // Pause any playing audio.
-            var recentlyPlayedAudioElement = document.getElementById(MOST_RECENTLY_PLAYED);
-            if (isPlaying(recentlyPlayedAudioElement)) {
-                pause(recentlyPlayedAudioElement);
+            if (isPlaying(document.getElementById(AUDIO_CLASS_PREFIX + MOST_RECENTLY_PLAYED_TUNE_ID))) {
+                pause(MOST_RECENTLY_PLAYED_TUNE_ID);
             }
             audioElement.play();
-            MOST_RECENTLY_PLAYED = tune;
+            MOST_RECENTLY_PLAYED_TUNE_ID = tuneId;
             $(clickedButton).toggleClass("fa-play-circle-o fa-play-circle");
         }
     }
@@ -91,18 +96,17 @@ var MOST_RECENTLY_PLAYED = "";
 
 
     // Pauses playing audio.
-    function pause(audioElement) {
+    function pause(tuneId) {
+        var audioElement = document.getElementById(AUDIO_CLASS_PREFIX + tuneId);
         audioElement.pause();
         audioElement.currentTime = 0;
         // Call onEnded manually to prevent races with playing something else.
-        onEnded();
+        onEnded(tuneId);
     }
 
     // Resets 'playing' icon when audio is no longer playing.
-    function onEnded() {
-        $(".fa-play-circle").each(function() {
-            $(this).toggleClass("fa-play-circle fa-play-circle-o");
-        })
+    function onEnded(tuneId) {
+        $('#' + PLAY_BUTTON_CLASS_PREFIX + tuneId).toggleClass("fa-play-circle fa-play-circle-o");
     }
 
 
