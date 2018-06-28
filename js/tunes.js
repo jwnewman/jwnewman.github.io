@@ -1,7 +1,7 @@
 var TUNES_DIRECTORY = "tunes/";
-var MOST_RECENTLY_PLAYED_TUNE_ID = "";
 var AUDIO_PREFIX = "audio-";
 var PLAY_BUTTON_PREFIX = "play-";
+var mostRecentlyPlayedTuneId = "";
 
 (function($) {
 
@@ -84,11 +84,11 @@ var PLAY_BUTTON_PREFIX = "play-";
         }
         else {
             // Pause any playing audio.
-            if (isPlaying(document.getElementById(AUDIO_PREFIX + MOST_RECENTLY_PLAYED_TUNE_ID))) {
-                pause(MOST_RECENTLY_PLAYED_TUNE_ID);
+            if (isPlaying(document.getElementById(AUDIO_PREFIX + mostRecentlyPlayedTuneId))) {
+                pause(mostRecentlyPlayedTuneId);
             }
             audioElement.play();
-            MOST_RECENTLY_PLAYED_TUNE_ID = tuneId;
+            mostRecentlyPlayedTuneId = tuneId;
             $(clickedButton).toggleClass("fa-play-circle-o fa-play-circle");
         }
     }
