@@ -1,4 +1,5 @@
 var TUNES_DIRECTORY = "tunes/";
+var TUNE_ID_PREFIX = "tune-";
 var AUDIO_PREFIX = "audio-";
 var PLAY_BUTTON_PREFIX = "play-";
 var mostRecentlyPlayedTuneId = "";
@@ -12,7 +13,7 @@ var mostRecentlyPlayedTuneId = "";
         var tunes = JSON.parse(window.tunes)[0].tunes;
         for (var i = 0; i < tunes.length; ++i) {
             // Generate unique ID from index.
-            appendTuneToDom(tunes[i], "tune-" + i);
+            appendTuneToDom(tunes[i], TUNE_ID_PREFIX + i);
         }
 
         // Bind event handlers.
