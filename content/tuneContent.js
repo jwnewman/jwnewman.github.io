@@ -2,7 +2,7 @@
 var tunes = '[{'
   + '"tunes": [\n'
     + '{\n'
-      + '"name": "Alley Ooop",\n'
+      + '"name": "Alley Oop",\n'
       + '"time": "Reel",\n'
       + '"key": "E maj",\n'
       + '"description": "We wrote this tune when Jess was visiting Mark in Amherst. A true cooperative effort, like some kind of move you can do in basketball.",\n'
